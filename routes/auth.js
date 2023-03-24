@@ -8,12 +8,11 @@ const { JWT_SECRET } = require("../config/keys");
 const requireLogin = require("../middleware/requireLogin");
 
 router.get("/", (req, res) => {
-  res.send("Hello world");
+  res.send("signin");
 });
 
 router.post("/signup", (req, res) => {
   const { name, email, password, pic } = req.body;
-  // console.log(req.body.name
   if (!email || !password || !name) {
     res.status(422).json({ error: "Specify all fields" });
   }
@@ -40,7 +39,6 @@ router.post("/signup", (req, res) => {
       });
     })
     .catch((err) => console.log(err));
-  //   res.json({ message: "Your data is succesfully sent" });
 });
 
 router.get("/protected", requireLogin, (req, res) => {
@@ -60,7 +58,6 @@ router.post("/signin", (req, res) => {
       .compare(password, savedUser.password)
       .then((doMatch) => {
         if (doMatch) {
-          //   res.json({ message: "successfully signed in" });
           const token = jwt.sign({ _id: savedUser._id }, JWT_SECRET);
           const { _id, name, email, followers, following, pic } = savedUser;
           res.json({
