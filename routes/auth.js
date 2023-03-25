@@ -7,7 +7,7 @@ const jwt = require("jsonwebtoken");
 const { JWT_SECRET } = require("../config/keys");
 const requireLogin = require("../middleware/requireLogin");
 
-router.get("/signin", (req, res) => {
+router.all("/", (req, res) => {
   res.redirect("/signin");
 });
 
