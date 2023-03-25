@@ -8,7 +8,7 @@ const { JWT_SECRET } = require("../config/keys");
 const requireLogin = require("../middleware/requireLogin");
 
 router.get("/signin", (req, res) => {
-  res.render("/signin");
+  res.redirect("/signin");
 });
 
 router.post("/signup", (req, res) => {
