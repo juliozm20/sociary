@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 
 export const UserProfile = () => {
   const [Prof, setProf] = useState({});
+  const [userfollower, setFollower] = useState([]);
   const { state, dispatch } = useContext(userContext);
   const [Profile, setProfile] = useState();
   const [userProfile, setUserProfile] = useState("");
@@ -27,8 +28,9 @@ export const UserProfile = () => {
         setUserEmail(result.user.email);
         setProfile(result.posts.length);
         setposts(result.posts);
-        setUserpic(result.user.pic);
         setProf(result);
+        setFollower(result.user.follower);
+        setUserpic(result.user.pic);
       });
   }, []);
 

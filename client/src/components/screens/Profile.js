@@ -42,9 +42,9 @@ export const Profile = () => {
               width: "108%",
             }}
           >
-            <h6>30 posts</h6>
-            <h6>30 followers</h6>
-            <h6>30 following</h6>
+            <h6>{mypics.length} posts</h6>
+            <h6>{state ? state.followers.length : "0"} followers</h6>
+            <h6>{state ? state.following.length : "0"} following</h6>
           </div>
         </div>
       </div>

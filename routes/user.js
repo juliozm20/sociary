@@ -19,7 +19,7 @@ router.get("/user/:id", requireLogin, (req, res) => {
 });
 
 router.put("/follow", requireLogin, async (req, res) => {
-  User.findByIdAndUpdate(
+  await User.findByIdAndUpdate(
     req.body.followId,
     {
       $push: { followers: req.user._id },
@@ -45,7 +45,7 @@ router.put("/follow", requireLogin, async (req, res) => {
 });
 
 router.put("/unfollow", requireLogin, async (req, res) => {
-  User.findByIdAndUpdate(
+  await User.findByIdAndUpdate(
     req.body.followId,
     {
       $pull: { followers: req.user._id },
